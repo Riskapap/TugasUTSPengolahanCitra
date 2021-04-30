@@ -18,22 +18,17 @@ TI.19.A2
 ![4](https://user-images.githubusercontent.com/56241285/116318034-5b396b00-a7de-11eb-937b-346df3b651f5.png)
 6. kemudian jangan beri tanda centang (√) pada menu Show File path in window title lalu klik “Ok”
 ![5](https://user-images.githubusercontent.com/56241285/116318461-00ecda00-a7df-11eb-9c83-735eba5db5b0.png)
-7. Buatlah rancangan GUI MATLAB yang terdiri dari 2 axes, 3 pushbutton, 1 slider, dan 1 edit text 
-![6](https://user-images.githubusercontent.com/56241285/116318797-87a1b700-a7df-11eb-85af-f64ddcbc9e5f.png)
+7. Buatlah rancangan GUI MATLAB yang terdiri dari 4 axes, 1 pushbutton, 3  Radiobutton, dan 3 panel
+![1](https://user-images.githubusercontent.com/56241285/116756736-cf6e4b80-aa36-11eb-8093-0f010a6360f3.png)
 8. Editlah property masing-masing komponen dengan cara meng-double klik setiap komponen
 - Pushbutton >> String = Open Image
-![6a](https://user-images.githubusercontent.com/56241285/116318992-ec5d1180-a7df-11eb-89cf-57b18ef83ec1.png)
-- Pushbutton >> String = Grayscale
-![6b](https://user-images.githubusercontent.com/56241285/116319149-2f1ee980-a7e0-11eb-9e42-22a8570000f5.png)
-- Pushbutton >> String = Open Save
-![6d](https://user-images.githubusercontent.com/56241285/116319298-77d6a280-a7e0-11eb-909e-2dbfd3974f92.png)
-- Slider >> min = 0, max = 255
-![6c](https://user-images.githubusercontent.com/56241285/116319372-9ccb1580-a7e0-11eb-818a-4e24357bcbb4.png)
-- Edit Text >> String = <kosongkan>
-- Axes1 >> XTick = <kosongkan>, YTick = <kosongkan>, ZTick = <kosongkan>
-![6e](https://user-images.githubusercontent.com/56241285/116319575-f16e9080-a7e0-11eb-9e98-11223e018154.png)
-- Axes2 >> XTick = <kosongkan>, YTick = <kosongkan>, ZTick = <kosongkan>
-![6f](https://user-images.githubusercontent.com/56241285/116319657-1c58e480-a7e1-11eb-83ef-ad8dedbfee5c.png)
+![3](https://user-images.githubusercontent.com/56241285/116756858-13615080-aa37-11eb-8446-477ac42796ca.png)
+- Radio Button 1 - 3 >> String = RGB, Grayscale, dan Binary
+![5](https://user-images.githubusercontent.com/56241285/116756940-41469500-aa37-11eb-9c43-4d90c0697bf4.png)
+- Panel >> String = Channel, Origibal Image, dan Complement Image
+![6](https://user-images.githubusercontent.com/56241285/116757050-7b179b80-aa37-11eb-9258-e309ea63ee1a.png)
+- Axes1 - Axes 4>> XTick = <kosongkan>, YTick = <kosongkan>, ZTick = <kosongkan>
+![2](https://user-images.githubusercontent.com/56241285/116757080-91255c00-aa37-11eb-80e8-c3f00eea7d11.png)
 9. maka tampilan GUI akan seperti ini
 ![1a](https://user-images.githubusercontent.com/56241285/116319932-86718980-a7e1-11eb-8409-5e5b4fa969cc.png)
 10.  Listing Program untuk Open Image
