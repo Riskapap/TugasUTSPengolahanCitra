@@ -27,90 +27,266 @@ TI.19.A2
 ![5](https://user-images.githubusercontent.com/56241285/116756940-41469500-aa37-11eb-9c43-4d90c0697bf4.png)
 - Panel >> String = Channel, Origibal Image, dan Complement Image
 ![6](https://user-images.githubusercontent.com/56241285/116757050-7b179b80-aa37-11eb-9258-e309ea63ee1a.png)
-- Axes1 - Axes 4>> XTick = <kosongkan>, YTick = <kosongkan>, ZTick = <kosongkan>
+- Axes1 - Axes 4 >> XTick = kosongkan, YTick = kosongkan, ZTick = kosongkan
 ![2](https://user-images.githubusercontent.com/56241285/116757080-91255c00-aa37-11eb-80e8-c3f00eea7d11.png)
 9. maka tampilan GUI akan seperti ini
-![1a](https://user-images.githubusercontent.com/56241285/116319932-86718980-a7e1-11eb-8409-5e5b4fa969cc.png)
-10.  Listing Program untuk Open Image
-![7](https://user-images.githubusercontent.com/56241285/116320064-c3d61700-a7e1-11eb-8a69-958c96fdba60.png)
-lalu Masukan Kodingannya
+![1](https://user-images.githubusercontent.com/56241285/116757282-fa0cd400-aa37-11eb-9e1a-33a41eb94324.png)
+10.  Listing Program untuk Open Image 
+![7](https://user-images.githubusercontent.com/56241285/116757316-0db83a80-aa38-11eb-9d47-ad4c0afd89bf.png)
+lalu Masukan seluruh Kodingannya
   
 ```
+function varargout = Negative_Image(varargin)
+% NEGATIVE_IMAGE MATLAB code for Negative_Image.fig
+%      NEGATIVE_IMAGE, by itself, creates a new NEGATIVE_IMAGE or raises the existing
+%      singleton*.
+%
+%      H = NEGATIVE_IMAGE returns the handle to a new NEGATIVE_IMAGE or the handle to
+%      the existing singleton*.
+%
+%      NEGATIVE_IMAGE('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in NEGATIVE_IMAGE.M with the given input arguments.
+%
+%      NEGATIVE_IMAGE('Property','Value',...) creates a new NEGATIVE_IMAGE or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before Negative_Image_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to Negative_Image_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+ 
+% Edit the above text to modify the response to help Negative_Image
+ 
+% Last Modified by GUIDE v2.5 01-May-2021 04:25:00
+ 
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @Negative_Image_OpeningFcn, ...
+                   'gui_OutputFcn',  @Negative_Image_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+ 
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+ 
+% --- Executes just before Negative_Image is made visible.
+function Negative_Image_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to Negative_Image (see VARARGIN)
+ 
+% Choose default command line output for Negative_Image
+handles.output = hObject;
+ 
+% Update handles structure
+guidata(hObject, handles);
+movegui(hObject,'center');
+clc;clear;
+ 
+% UIWAIT makes Negative_Image wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+ 
+% --- Outputs from this function are returned to the command line.
+function varargout = Negative_Image_OutputFcn(hObject, eventdata, handles)
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+ 
 % --- Executes on button press in pushbutton1.
 function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-[name_file1,name_path1] = uigetfile( ...
-    {'*.bmp;*.jpg;*.tif','Files of type (*.bmp,*.jpg,*.tif)';
-    '*.bmp','File Bitmap (*.bmp)';...
-    '*.jpg','File jpeg (*.jpg)';
-    '*.tif','File Tif (*.tif)';
-    '*.*','All Files (*.*)'},...
-    'Open Image');
+[filename,pathname] = uigetfile('*.*');
  
-if ~isequal(name_file1,0)
-    handles.data1 = imread(fullfile(name_path1,name_file1));
-    guidata(hObject,handles);
-    axes(handles.axes1);
-    imshow(handles.data1);
-else
-    return;
-end
-```
-11. Listing Program untuk konversi citra RGB menjadi grayscale
-![8](https://user-images.githubusercontent.com/56241285/116320302-2af3cb80-a7e2-11eb-8775-b795a8888cc2.png)
-lalu masukan kodingannya
-```
-% --- Executes on slider movement.
-function slider1_Callback(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+if ~isequal(filename,0)
  
-% Hints: get(hObject,'Value') returns position of slider
-%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
-gray = handles.data2;
-value = get(handles.slider1,'value');
-thresh = imcomplement(im2bw(gray,value/255));
-axes(handles.axes2);
-imshow(thresh);
-handles.data3 = thresh;
-guidata(hObject,handles);
-set(handles.edit1,'String',value)
-```
-12. Listing Program untuk menyimpan citra biner hasil konversi
-![10](https://user-images.githubusercontent.com/56241285/116320440-727a5780-a7e2-11eb-8126-e7dec4757732.png)
-masukan kodingan
-```
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-thresh = handles.data3;
-[name_file_save,path_save] = uiputfile( ...
-    {'*.bmp','File Bitmap (*.bmp)';...
-    '*.jpg','File jpeg (*.jpg)';
-    '*.tif','File Tif (*.tif)';
-    '*.*','All Files (*.*)'},...
-    'Save Image');
-if ~isequal(name_file_save,0)
-    imwrite(thresh,fullfile(path_save,name_file_save));
+    Img = imread(fullfile(pathname,filename));
+    [~,~,m] = size(Img);
+    if m == 3
+        axes(handles.axes1)
+        imshow(Img)
+        handles.Img = Img;
+        guidata(hObject, handles)
+    else
+        msgbox('Please insert RGB Image')
+    end
 else
     return
 end
+ 
+% --- Executes on button press in radiobutton1.
+function radiobutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hint: get(hObject,'Value') returns toggle state of radiobutton1
+set(handles.radiobutton1,'Value',1)
+set(handles.radiobutton2,'Value',0)
+set(handles.radiobutton3,'Value',0)
+ 
+Img = handles.Img;
+axes(handles.axes1)
+cla('reset')
+imshow(Img)
+ 
+R = Img(:,:,1);
+G = Img(:,:,2);
+B = Img(:,:,3);
+ 
+axes(handles.axes2)
+cla('reset')
+h = histogram(R(:),256);
+h.FaceColor = [1 0 0];
+h.EdgeColor = 'r';
+hold on
+ 
+h = histogram(G(:),256);
+h.FaceColor = [0 1 0];
+h.EdgeColor = 'g';
+ 
+h = histogram(B(:),256);
+h.FaceColor = [0 0 1];
+h.EdgeColor = 'b';
+grid on
+set(gca,'Xlim',[0 255])
+hold off
+ 
+% Image Complement
+Img_Comp = imcomplement(Img);
+ 
+axes(handles.axes3)
+cla('reset')
+imshow(Img_Comp)
+ 
+R = Img_Comp(:,:,1);
+G = Img_Comp(:,:,2);
+B = Img_Comp(:,:,3);
+ 
+axes(handles.axes4)
+cla('reset')
+h = histogram(R(:),256);
+h.FaceColor = [1 0 0];
+h.EdgeColor = 'r';
+hold on
+ 
+h = histogram(G(:),256);
+h.FaceColor = [0 1 0];
+h.EdgeColor = 'g';
+ 
+h = histogram(B(:),256);
+h.FaceColor = [0 0 1];
+h.EdgeColor = 'b';
+set(gca,'Xlim',[0 255])
+grid on
+hold off
+ 
+% --- Executes on button press in radiobutton2.
+function radiobutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hint: get(hObject,'Value') returns toggle state of radiobutton2
+set(handles.radiobutton1,'Value',0)
+set(handles.radiobutton2,'Value',1)
+set(handles.radiobutton3,'Value',0)
+ 
+Img = handles.Img;
+Gray = rgb2gray(Img);
+ 
+axes(handles.axes1)
+cla('reset')
+imshow(Gray)
+ 
+axes(handles.axes2)
+cla('reset')
+h = histogram(Gray(:),256);
+h.FaceColor = [0.5 0.5 0.5];
+h.EdgeColor = [0.5 0.5 0.5];
+set(gca,'Xlim',[0 255])
+grid on
+ 
+% Image Complement
+Gray_Comp = imcomplement(Gray);
+axes(handles.axes3)
+cla('reset')
+imshow(Gray_Comp)
+ 
+axes(handles.axes4)
+cla('reset')
+h = histogram(Gray_Comp(:),256);
+h.FaceColor = [0.5 0.5 0.5];
+h.EdgeColor = [0.5 0.5 0.5];
+set(gca,'Xlim',[0 255])
+grid on
+ 
+% --- Executes on button press in radiobutton3.
+function radiobutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to radiobutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hint: get(hObject,'Value') returns toggle state of radiobutton3
+set(handles.radiobutton1,'Value',0)
+set(handles.radiobutton2,'Value',0)
+set(handles.radiobutton3,'Value',1)
+ 
+Img = handles.Img;
+Gray = rgb2gray(Img);
+bw = im2bw(Gray,graythresh(Gray));
+ 
+axes(handles.axes1)
+cla('reset')
+imshow(bw)
+ 
+axes(handles.axes2)
+h = histogram(double(bw(:)),2);
+h.FaceColor = [0 0 0];
+h.EdgeColor = [0 0 0];
+set(gca,'Xlim',[0 1])
+grid on
+ 
+% Image complement
+bw_Comp = ~bw;
+ 
+axes(handles.axes3)
+cla('reset')
+imshow(bw_Comp)
+ 
+axes(handles.axes4)
+h = histogram(double(bw_Comp(:)),2);
+h.FaceColor = [0 0 0];
+h.EdgeColor = [0 0 0];
+set(gca,'Xlim',[0 1])
+grid on
 ```
 13. Ketika di Run maka tampilan GUI akan tampak seperti ini
-![11](https://user-images.githubusercontent.com/56241285/116320555-a0f83280-a7e2-11eb-9bd5-25c8079cc591.png)
+![12](https://user-images.githubusercontent.com/56241285/116757508-6d164a80-aa38-11eb-9924-7cd5491a6b71.png)
 14. Klik Open Image, pilih gambar yang ingin di masukan
-![12](https://user-images.githubusercontent.com/56241285/116320589-b5d4c600-a7e2-11eb-9a5a-dbb21a032fcd.png)
-15. Klik Grayscale
-![13](https://user-images.githubusercontent.com/56241285/116320674-dc92fc80-a7e2-11eb-9823-7e491f59451e.png)
-16. Geser nilai Slider
-![14](https://user-images.githubusercontent.com/56241285/116320733-faf8f800-a7e2-11eb-8d94-fbd1b35c92d9.png)
-17. Citra biner yang terbentuk dapat disimpan dengan cara meng-klik tombol Save
-![15](https://user-images.githubusercontent.com/56241285/116320781-13691280-a7e3-11eb-9a86-8b1107fa52e1.png)
-![16](https://user-images.githubusercontent.com/56241285/116320774-1106b880-a7e3-11eb-9f96-ae9c2357e502.png)
-18. hasilnya
-![17](https://user-images.githubusercontent.com/56241285/116320780-1237e580-a7e3-11eb-8f11-39de3ab702bd.png)
+![8](https://user-images.githubusercontent.com/56241285/116757536-79020c80-aa38-11eb-8a77-f016bc6847c2.png)
+15. Klik RGB
+![9](https://user-images.githubusercontent.com/56241285/116757591-9040fa00-aa38-11eb-8639-4b8480bf996e.png)
+17. Klik Grayscale
+![10](https://user-images.githubusercontent.com/56241285/116757637-a2bb3380-aa38-11eb-913a-aa14917161d6.png)
+16. Binary
+![11](https://user-images.githubusercontent.com/56241285/116757670-b8305d80-aa38-11eb-8d12-1c2034d90518.png)
