@@ -4,7 +4,7 @@ Riska Puspa Anggraeni Putri
 TI.19.A2
 311910440
 ```
-## cara membuat citra berwarna (RGB) menjadi hitam putih (biner) menggunakan Graphical User Interface  (GUI) MATLAB
+## cara membuat Complement Image (Negative Image) menggunakan Graphical User Interface (GUI) MATLAB
 ### langkah - langkah
 1.  Membuka aplikasi software Matlab
 ![ScreenShot_20210428045213](https://user-images.githubusercontent.com/56241285/116317483-94bda680-a7dd-11eb-97a9-6b7c605937c4.png)
